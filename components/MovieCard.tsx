@@ -24,8 +24,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           </div>
         </div>
       </div>
-      <div className="px-1">
-        <h3 className="text-zinc-100 text-[12px] md:text-[14px] font-black line-clamp-1 group-hover:text-blue-400 transition-colors uppercase tracking-tight font-premium">
+      <div className="px-1 h-12 md:h-14">
+        <h3 className="text-zinc-100 text-[12px] md:text-[14px] font-black line-clamp-2 group-hover:text-blue-400 transition-colors uppercase tracking-tight font-premium leading-tight">
           {movie.name}
         </h3>
         <div className="flex items-center gap-3 mt-1.5 opacity-60 group-hover:opacity-100 transition-opacity">

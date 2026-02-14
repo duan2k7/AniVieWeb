@@ -75,7 +75,7 @@ const Home: React.FC = () => {
                                 <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] italic opacity-60">Trải nghiệm đỉnh cao</span>
                             </div>
 
-                            <h1 className="text-4xl md:text-9xl font-black text-white mb-8 md:mb-10 tracking-tighter leading-[0.8] uppercase italic font-premium drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-slide-right" style={{ animationDelay: '0.1s' }}>
+                            <h1 className="text-4xl md:text-9xl font-black text-white mb-8 md:mb-10 tracking-tighter leading-[0.8] uppercase italic font-premium drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-slide-right line-clamp-2" style={{ animationDelay: '0.1s' }}>
                                 {heroMovie.name}
                             </h1>
 

@@ -21,6 +21,7 @@ const Header: React.FC = () => {
         { name: 'Trang Chủ', path: '/' },
         { name: 'Phim Lẻ', path: '/danh-sach/phim-le' },
         { name: 'Phim Bộ', path: '/danh-sach/phim-bo' },
+        { name: 'Anime', path: '/danh-sach/hoat-hinh' },
         { name: 'TV Shows', path: '/danh-sach/tv-shows' },
     ];
 

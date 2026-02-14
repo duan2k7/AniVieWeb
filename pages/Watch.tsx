@@ -65,83 +65,122 @@ const Watch: React.FC = () => {
     const currentServer = movie.episodes[currentServerIndex];
 
     return (
-        <div className="min-h-screen bg-[#050505] pt-16 md:pt-20">
-            {/* Cinematic Player Section */}
-            <div className="bg-black border-b border-white/5 relative group">
-                <div className="max-w-[1600px] mx-auto overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.9)]">
-                    <div className="aspect-video bg-zinc-900 relative">
-                        {currentEpisode.link_embed ? (
-                            <iframe
-                                src={currentEpisode.link_embed}
-                                className="w-full h-full"
-                                frameBorder="0"
-                                allowFullScreen
-                                title={currentEpisode.name}
-                            ></iframe>
-                        ) : (
-                            <div className="w-full h-full flex items-center justify-center text-zinc-700 text-[10px] font-black uppercase tracking-[0.5em] italic">
-                                Tín hiệu đang được đồng bộ...
+        <div className="min-h-screen bg-[#050505] pt-20 px-4 md:px-8 pb-12">
+            <div className="max-w-[1700px] mx-auto">
+                <div className="flex flex-col lg:flex-row gap-8">
+
+                    {/* Left: Episode List Sidebar */}
+                    <div className="w-full lg:w-[400px] flex-shrink-0 order-2 lg:order-1">
+                        <div className="bg-zinc-900/40 border border-white/5 rounded-3xl overflow-hidden sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+                            <div className="p-6 border-b border-white/5 bg-zinc-900/60 flex items-center justify-between">
+                                <span className="text-white font-black uppercase text-xs tracking-[0.4em]">Danh sách tập</span>
+                                <span className="text-blue-500 font-bold text-[10px] uppercase bg-blue-500/10 px-2 py-1 rounded-sm">
+                                    {currentServer?.server_data.length} Tập
+                                </span>
                             </div>
-                        )}
-                    </div>
-                </div>
-                {/* Light reflection effect */}
-                <div className="absolute -bottom-1 left-0 right-0 h-[100px] bg-gradient-to-t from-blue-600/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-            </div>
 
-            <div className="max-w-[1600px] mx-auto px-6 py-12 md:py-20">
-                <div className="flex flex-col xl:flex-row justify-between items-start gap-12 mb-16">
-                    <div className="flex-1 space-y-6">
-                        <div className="flex items-center gap-4 animate-in fade-in slide-in-from-left duration-700">
-                            <div className="bg-blue-600 w-1 h-8 rounded-full shadow-lg shadow-blue-500/40"></div>
-                            <h1 className="text-2xl md:text-5xl font-black text-white tracking-tighter leading-none uppercase italic font-premium">{movie.name}</h1>
-                        </div>
-                        <div className="flex flex-wrap items-center gap-4 opacity-70 animate-in fade-in slide-in-from-left duration-700 delay-100">
-                            <span className="bg-white/10 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">Tập {currentEpisode.name}</span>
-                            <span className="text-zinc-500 text-xs md:text-lg font-medium italic">{movie.origin_name}</span>
+                            {/* Server Selection if multiple */}
+                            {movie.episodes.length > 1 && (
+                                <div className="p-4 border-b border-white/5 bg-zinc-900/20 flex gap-2">
+                                    {movie.episodes.map((server, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => handleServerChange(idx)}
+                                            className={`flex-1 py-2 text-[9px] font-black uppercase tracking-widest border rounded-lg transition-all ${currentServerIndex === idx ? 'bg-white text-black border-white' : 'bg-white/5 text-zinc-500 border-white/5 hover:bg-white/10'}`}
+                                        >
+                                            {server.server_name.split(' ')[1] || server.server_name}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+
+                            <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
+                                <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 gap-3">
+                                    {currentServer?.server_data.map((ep, idx) => (
+                                        <Link
+                                            key={ep.slug}
+                                            to={`/xem-phim/${movie.slug}/${ep.slug}`}
+                                            className={`
+                                                aspect-square flex items-center justify-center text-xs font-black rounded-xl transition-all border
+                                                ${ep.slug === currentEpisode?.slug
+                                                    ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-500/20'
+                                                    : 'bg-white/5 text-zinc-500 border-white/5 hover:text-white hover:bg-white/10 hover:border-white/20'}
+                                            `}
+                                        >
+                                            {ep.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Server Selection */}
-                    {movie.episodes.length > 1 && (
-                        <div className="flex flex-wrap gap-4 w-full xl:w-auto animate-in fade-in slide-in-from-right duration-700 delay-200">
-                            {movie.episodes.map((server, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => handleServerChange(idx)}
-                                    className={`flex-1 md:flex-none px-8 py-4 text-[10px] font-bold uppercase tracking-[0.3em] border transition-all rounded-full active:scale-95 font-premium ${currentServerIndex === idx ? 'bg-white text-black border-white shadow-[0_0_30px_rgba(255,255,255,0.2)]' : 'bg-white/[0.03] text-zinc-500 border-white/[0.05] hover:text-white hover:bg-white/[0.08]'}`}
-                                >
-                                    {server.server_name}
-                                </button>
-                            ))}
+                    {/* Right: Player & Content */}
+                    <div className="flex-1 order-1 lg:order-2 space-y-8">
+                        {/* Player Area */}
+                        <div className="relative group">
+                            <div className="aspect-video bg-black rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative">
+                                {currentEpisode.link_embed ? (
+                                    <iframe
+                                        src={currentEpisode.link_embed}
+                                        className="w-full h-full"
+                                        frameBorder="0"
+                                        allowFullScreen
+                                        title={currentEpisode.name}
+                                    ></iframe>
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center text-zinc-800 text-[10px] font-black uppercase tracking-[0.5em] italic">
+                                        Tín hiệu đang được kết nối...
+                                    </div>
+                                )}
+                            </div>
+                            {/* Ambient Light effect around player */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                         </div>
-                    )}
-                </div>
 
-                <div className="bg-white/[0.02] p-8 md:p-16 border border-white/[0.05] rounded-[40px] animate-in fade-in slide-in-from-bottom duration-1000">
-                    <div className="flex items-center justify-between mb-12 border-b border-white/[0.05] pb-6">
-                        <h3 className="text-zinc-500 text-[11px] font-black uppercase tracking-[0.6em] italic">Danh sách tập phim</h3>
-                        <div className="flex items-center gap-4">
-                            <span className="text-zinc-700 text-[10px] font-black uppercase tracking-widest">{currentServer?.server_data.length} Chương hồi</span>
-                            <div className="w-10 h-[1px] bg-zinc-800"></div>
+                        {/* Movie Info below Player */}
+                        <div className="space-y-8 p-2">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-6 w-1 bg-blue-600 rounded-full"></div>
+                                    <span className="text-blue-500 font-black uppercase text-[10px] tracking-[0.4em]">Đang trình chiếu</span>
+                                </div>
+                                <h1 className="text-3xl md:text-6xl font-black text-white tracking-tighter leading-tight uppercase font-premium">
+                                    {movie.name}
+                                </h1>
+                                <div className="flex items-center gap-6">
+                                    <span className="text-zinc-500 font-bold italic text-lg">{movie.origin_name}</span>
+                                    <div className="h-4 w-px bg-white/10"></div>
+                                    <span className="text-zinc-400 font-black text-sm uppercase tracking-widest bg-white/5 px-4 py-1.5 rounded-full border border-white/5">
+                                        Tập {currentEpisode.name}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/5">
+                                <div className="space-y-2">
+                                    <span className="text-zinc-600 text-[10px] font-black uppercase tracking-widest">Năm phát hành</span>
+                                    <p className="text-white font-bold">{movie.year}</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <span className="text-zinc-600 text-[10px] font-black uppercase tracking-widest">Thời lượng</span>
+                                    <p className="text-white font-bold">{movie.time || 'N/A'}</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <span className="text-zinc-600 text-[10px] font-black uppercase tracking-widest">Chất lượng</span>
+                                    <p className="text-blue-500 font-bold">{movie.quality}</p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em]">Cốt truyện</h3>
+                                <p className="text-zinc-400 leading-relaxed text-lg text-justify max-w-4xl italic opacity-80 border-l-2 border-zinc-800 pl-8">
+                                    {movie.content.replace(/<[^>]+>/g, '')}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-4 md:gap-5">
-                        {currentServer?.server_data.map(ep => (
-                            <Link
-                                key={ep.slug}
-                                to={`/xem-phim/${movie.slug}/${ep.slug}`}
-                                className={`
-                                    aspect-[4/3] flex items-center justify-center text-[12px] font-black transition-all border rounded-xl active:scale-90 font-premium
-                                    ${ep.slug === currentEpisode?.slug
-                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_40px_rgba(37,99,235,0.4)]'
-                                        : 'bg-white/[0.03] text-zinc-500 border-white/[0.05] hover:text-white hover:border-white/20 hover:bg-white/5'}
-                                `}
-                            >
-                                {ep.name}
-                            </Link>
-                        ))}
-                    </div>
+
                 </div>
             </div>
         </div>

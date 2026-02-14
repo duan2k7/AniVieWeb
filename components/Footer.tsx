@@ -29,8 +29,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-20 pt-10 border-t border-white/[0.03] flex justify-between items-center text-zinc-700">
-        </div>
       </div>
     </footer>
   );

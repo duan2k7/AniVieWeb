@@ -108,8 +108,8 @@ export const ApiService = {
     };
   },
 
-  // Search Movies (Temporarily showing all results)
-  searchMovies: async (keyword: string, page: number = 1): Promise<{ items: Movie[] }> => {
+  // Search Movies
+  searchMovies: async (keyword: string, page: number = 1): Promise<{ items: Movie[], pagination?: any }> => {
     try {
       const data = await fetchJson(`${BASE_URL}/films/search?keyword=${encodeURIComponent(keyword)}&page=${page}`);
       const rawItems = data.items || [];
@@ -125,11 +125,12 @@ export const ApiService = {
           year: item.year ? parseInt(item.year) : (item.created ? new Date(item.created).getFullYear() : 0),
           quality: item.quality,
           lang: item.language
-        }))
+        })),
+        pagination: data.paginate
       };
     } catch (error) {
       console.error('Search failed:', error);
-      return { items: [] };
+      return { items: [], pagination: { total_page: 1 } };
     }
   }
 };

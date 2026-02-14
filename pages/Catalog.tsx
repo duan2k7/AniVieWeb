@@ -30,8 +30,13 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                     setTitle(`Tìm kiếm: ${keyword}`);
                     const res = await ApiService.searchMovies(keyword, page);
                     setMovies(res.items);
-                    // Search might not return pagination info, so assume more if we hit a limit
-                    setHasMore(res.items.length >= 20);
+
+                    const pagination = res.pagination;
+                    if (pagination && pagination.total_page) {
+                        setHasMore(page < pagination.total_page);
+                    } else {
+                        setHasMore(res.items.length >= 20);
+                    }
                 } else if (type === 'category' && category) {
                     const titles: Record<string, string> = {
                         'hoat-hinh': 'Phim Hoạt Hình',

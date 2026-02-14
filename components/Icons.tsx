@@ -15,7 +15,8 @@ import {
   Info,
   Trash2,
   MessageSquare,
-  Home
+  Home,
+  Plus
 } from 'lucide-react';
 
 export const Icons = {
@@ -35,5 +36,6 @@ export const Icons = {
   Info,
   Trash2,
   MessageSquare,
-  Home
+  Home,
+  Plus
 };

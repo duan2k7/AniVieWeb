@@ -4,6 +4,7 @@ import { ApiService } from '../services/api';
 import { Movie } from '../types';
 import MovieCard from '../components/MovieCard';
 import { Icons } from '../components/Icons';
+import Pagination from '../components/Pagination';
 
 interface CatalogProps {
     type?: 'search' | 'category';
@@ -110,25 +111,11 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                                 <MovieCard key={movie._id} movie={movie} />
                             ))}
                         </div>
-                        <div className="flex justify-center items-center gap-6 mt-24 pt-10 border-t border-white/[0.05]">
-                            <button
-                                onClick={() => handlePageChange(page - 1)}
-                                disabled={page === 1}
-                                className={`px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] border transition-all rounded-full active:scale-95 font-premium ${page === 1 ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-white/10 hover:text-white hover:border-blue-500 hover:bg-blue-600'}`}
-                            >
-                                Trang trước
-                            </button>
-                            <span className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em] font-premium italic">
-                                0{page} <span className="mx-4 text-zinc-800">/</span> {movies.length < 10 ? page : '...'}
-                            </span>
-                            <button
-                                onClick={() => handlePageChange(page + 1)}
-                                disabled={!hasMore}
-                                className={`px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] border transition-all rounded-full active:scale-95 font-premium ${!hasMore ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-white/10 hover:text-white hover:border-blue-500 hover:bg-blue-600'}`}
-                            >
-                                Tiếp theo
-                            </button>
-                        </div>
+                        <Pagination
+                            currentPage={page}
+                            hasMore={hasMore}
+                            onPageChange={handlePageChange}
+                        />
                     </>
                 ) : (
                     <div className="text-center py-32 bg-white/[0.02] rounded-[40px] border border-white/[0.05] animate-in fade-in duration-1000">

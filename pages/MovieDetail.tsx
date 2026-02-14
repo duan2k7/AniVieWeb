@@ -19,8 +19,18 @@ const MovieDetail: React.FC = () => {
 
     if (loading) return <div className="min-h-screen bg-black"></div>;
     return (
-        <div className="min-h-screen bg-[#050505] text-white">
-            <div className="max-w-[1200px] mx-auto pt-32 pb-20 px-6">
+        <div className="min-h-screen bg-[#050505] text-white relative overflow-hidden">
+            {/* Ambient Blurred Background */}
+            <div className="absolute top-0 left-0 right-0 h-[600px] pointer-events-none overflow-hidden opacity-30">
+                <img
+                    src={movie.poster_url}
+                    className="w-full h-full object-cover blur-[100px] scale-150"
+                    alt=""
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+            </div>
+
+            <div className="relative max-w-[1200px] mx-auto pt-32 pb-20 px-6">
                 <div className="flex flex-col md:flex-row gap-12 items-start">
                     {/* Minimalist Poster Area */}
                     <div className="w-64 md:w-80 shrink-0">

@@ -59,7 +59,7 @@ const Header: React.FC = () => {
                     <form onSubmit={handleSearchSubmit} className="hidden md:block relative w-full max-w-[320px] group">
                         <input
                             type="text"
-                            placeholder="Khám phá kho tàng phim..."
+                            placeholder="Tìm kiếm Anime..."
                             className="w-full bg-white/[0.03] border border-white/[0.08] rounded-full py-2.5 pl-11 pr-5 text-[11px] text-white focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.05] transition-all font-medium placeholder:zinc-600"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
                         <input
                             type="text"
                             autoFocus
-                            placeholder="Bận đang muốn xem gì?"
+                            placeholder="Bạn muốn xem Anime gì?"
                             className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-6 text-sm text-white focus:outline-none focus:border-blue-500 transition-all font-bold placeholder:zinc-600"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}

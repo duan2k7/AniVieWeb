@@ -113,11 +113,11 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                             {type === 'search' ? `Kết quả: ${keyword}` : (titles[category as string] || 'Danh Sách Phim')}
                         </h1>
                         <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-4 italic opacity-60">
-                            Khám phá tinh hoa điện ảnh toàn cầu
+                            Khám phá những vùng đất kỳ ảo
                         </p>
                     </div>
                     <div className="flex items-center gap-4 text-zinc-500 font-black text-[10px] uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/5">
-                        {movies.length} Tác phẩm
+                        {movies.length} Anime
                     </div>
                 </header>
 
@@ -139,7 +139,7 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                         <div className="inline-block p-10 bg-white/5 rounded-full mb-8">
                             <Icons.Search size={40} className="text-zinc-800" />
                         </div>
-                        <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.4em]">Tín hiệu trống - Không tìm thấy nội dung</p>
+                        <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.4em]">Tín hiệu trống - Không tìm thấy Anime</p>
                     </div>
                 )}
             </div>

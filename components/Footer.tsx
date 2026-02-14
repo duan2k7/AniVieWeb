@@ -35,7 +35,6 @@ const Footer: React.FC = () => {
               <ul className="space-y-4">
                 <li><Link to="/danh-sach/hoat-hinh" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Hoạt hình</Link></li>
                 <li><Link to="/danh-sach/tv-shows" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">TV Shows</Link></li>
-                <li><Link to="#" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Hành động</Link></li>
               </ul>
             </div>
 

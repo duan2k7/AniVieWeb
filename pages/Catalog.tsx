@@ -44,17 +44,30 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                         'phim-le': 'Phim Lẻ Mới',
                         'phim-bo': 'Phim Bộ Mới',
                         'tv-shows': 'TV Shows & Gameshow',
-                        'phim-dang-chieu': 'Phim Đang Chiếu'
+                        'phim-dang-chieu': 'Phim Đang Chiếu',
+                        'phim-moi': 'Phim Mới Cập Nhật'
                     };
                     setTitle(`${titles[category] || 'Danh Sách Phim'}`);
-                    const res = await ApiService.getMoviesByType(category, page, 24);
-                    setMovies(res.items);
 
-                    const pagination = res.params;
-                    if (pagination && pagination.total_page) {
-                        setHasMore(page < pagination.total_page);
+                    let res;
+                    if (category === 'phim-moi') {
+                        res = await ApiService.getNewMovies(page);
+                        setMovies(res.items);
+                        const pagination = res.pagination;
+                        if (pagination && pagination.total_page) {
+                            setHasMore(page < pagination.total_page);
+                        } else {
+                            setHasMore(res.items.length >= 20);
+                        }
                     } else {
-                        setHasMore(res.items.length >= 20);
+                        res = await ApiService.getMoviesByType(category, page, 24);
+                        setMovies(res.items);
+                        const pagination = res.params;
+                        if (pagination && pagination.total_page) {
+                            setHasMore(page < pagination.total_page);
+                        } else {
+                            setHasMore(res.items.length >= 20);
+                        }
                     }
                 }
             } catch (err) {
@@ -65,7 +78,16 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
         };
         fetchData();
         window.scrollTo(0, 0);
+        if (type === 'search' && keyword) {
+            document.title = `Tìm kiếm: ${keyword} - MovieHub`;
+        }
     }, [type, category, keyword, page]);
+
+    useEffect(() => {
+        if (type === 'category' && title) {
+            document.title = `${title} - MovieHub`;
+        }
+    }, [title, type]);
 
     const handlePageChange = (newPage: number) => {
         const params = new URLSearchParams(searchParams);
@@ -84,7 +106,8 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
         'phim-le': 'Phim Lẻ Mới',
         'phim-bo': 'Phim Bộ Mới',
         'tv-shows': 'TV Shows & Gameshow',
-        'phim-dang-chieu': 'Phim Đang Chiếu'
+        'phim-dang-chieu': 'Phim Đang Chiếu',
+        'phim-moi': 'Phim Mới Cập Nhật'
     };
 
     return (

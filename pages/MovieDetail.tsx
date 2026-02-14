@@ -13,7 +13,10 @@ const MovieDetail: React.FC = () => {
         if (!slug) return;
         setLoading(true);
         ApiService.getMovieDetail(slug)
-            .then(data => setMovie(data))
+            .then(data => {
+                setMovie(data);
+                document.title = `${data.name} - MovieHub`;
+            })
             .finally(() => setLoading(false));
     }, [slug]);
 

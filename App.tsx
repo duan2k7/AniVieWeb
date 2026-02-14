@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import MovieDetail from './pages/MovieDetail';
-import Watch from './pages/Watch';
-import Catalog from './pages/Catalog';
+
+const Home = lazy(() => import('./pages/Home'));
+const MovieDetail = lazy(() => import('./pages/MovieDetail'));
+const Watch = lazy(() => import('./pages/Watch'));
+const Catalog = lazy(() => import('./pages/Catalog'));
+
+const LoadingFallback = () => (
+  <div className="min-h-screen bg-black flex items-center justify-center">
+    <div className="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -19,14 +26,16 @@ const App: React.FC = () => {
     <HashRouter>
       <Layout>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/phim/:slug" element={<MovieDetail />} />
-          <Route path="/xem-phim/:slug/:episodeSlug" element={<Watch />} />
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/phim/:slug" element={<MovieDetail />} />
+            <Route path="/xem-phim/:slug/:episodeSlug" element={<Watch />} />
 
-          <Route path="/danh-sach/:category" element={<Catalog type="category" />} />
-          <Route path="/tim-kiem" element={<Catalog type="search" />} />
-        </Routes>
+            <Route path="/danh-sach/:category" element={<Catalog type="category" />} />
+            <Route path="/tim-kiem" element={<Catalog type="search" />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </HashRouter>
   );

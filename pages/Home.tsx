@@ -13,6 +13,7 @@ const Home: React.FC = () => {
     const [heroMovie, setHeroMovie] = useState<Movie | null>(null);
 
     useEffect(() => {
+        document.title = 'MovieHub - Phim Mới Mỗi Ngày';
         const fetchAll = async () => {
             try {
                 const [newRes, leRes, boRes] = await Promise.all([

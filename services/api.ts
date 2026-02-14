@@ -2,10 +2,21 @@ import { Movie, MovieDetail } from '../types';
 
 const BASE_URL = 'https://phim.nguonc.com/api';
 
+const cache: Record<string, { data: any, timestamp: number }> = {};
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 const fetchJson = async (url: string) => {
+  const now = Date.now();
+  if (cache[url] && (now - cache[url].timestamp < CACHE_DURATION)) {
+    return cache[url].data;
+  }
+
   const response = await fetch(url);
   if (!response.ok) throw new Error('Network response was not ok');
-  return response.json();
+
+  const data = await response.json();
+  cache[url] = { data, timestamp: now };
+  return data;
 };
 
 export const ApiService = {

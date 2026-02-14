@@ -18,6 +18,7 @@ const Watch: React.FC = () => {
         ApiService.getMovieDetail(slug)
             .then(data => {
                 setMovie(data);
+                document.title = `Xem Phim ${data.name} - MovieHub`;
                 if (data.episodes.length > 0) {
                     let foundEp: Episode | null = null;
                     let foundServerIndex = 0;

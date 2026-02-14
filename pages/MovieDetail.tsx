@@ -67,13 +67,10 @@ const MovieDetail: React.FC = () => {
                         <div className="flex gap-4">
                             <Link
                                 to={movie.episodes?.[0]?.server_data?.[0]?.slug ? `/xem-phim/${movie.slug}/${movie.episodes[0].server_data[0].slug}` : '#'}
-                                className="bg-white text-black px-10 py-4 rounded-full font-bold text-sm hover:bg-zinc-200 transition-colors"
+                                className="bg-white text-black px-12 py-4 rounded-full font-bold text-sm hover:bg-zinc-200 transition-colors shadow-xl active:scale-95"
                             >
                                 Xem ngay
                             </Link>
-                            <button className="bg-zinc-900 text-white border border-white/10 px-10 py-4 rounded-full font-bold text-sm hover:bg-zinc-800 transition-colors">
-                                Lưu lại
-                            </button>
                         </div>
 
                         <div className="space-y-4">

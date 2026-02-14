@@ -54,13 +54,13 @@ const Home: React.FC = () => {
                         className="w-full h-full object-cover opacity-70 md:opacity-50 scale-105 animate-fade"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent"></div>
-                    <div className="absolute inset-0 flex flex-col justify-center md:justify-end p-8 md:p-20 max-w-[1600px] mx-auto w-full">
-                        <div className="max-w-4xl mb-6 md:mb-16 pt-12 md:pt-0">
+                    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-20 max-w-[1600px] mx-auto w-full">
+                        <div className="max-w-4xl mb-12 md:mb-16">
                             <div className="flex items-center gap-3 mb-6 animate-slide-right">
                                 <span className="bg-blue-600 text-white text-[9px] font-black px-3 py-1 rounded-sm uppercase tracking-[0.2em] shadow-xl shadow-blue-500/30">Nổi bật hôm nay</span>
                                 <span className="text-zinc-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] opacity-60">Thanh lọc tâm hồn</span>
                             </div>
-                            <h1 className="text-4xl md:text-8xl font-black text-white mb-6 md:mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-2xl animate-slide-right" style={{ animationDelay: '0.1s' }}>
+                            <h1 className="text-3xl md:text-8xl font-black text-white mb-6 md:mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-2xl animate-slide-right" style={{ animationDelay: '0.1s' }}>
                                 {heroMovie.name}
                             </h1>
                             <p className="text-zinc-400 text-xs md:text-xl mb-10 md:mb-14 line-clamp-2 max-w-2xl font-medium italic opacity-70 border-l border-zinc-800 pl-6 animate-slide-right" style={{ animationDelay: '0.2s' }}>

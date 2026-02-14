@@ -86,22 +86,22 @@ const MovieDetail: React.FC = () => {
                                 </p>
                             </div>
 
-                            {/* Episode List */}
+                            {/* Episode List - Clean Minimalist Style */}
                             {movie.episodes?.length > 0 && (
-                                <div className="bg-white/[0.03] backdrop-blur-3xl p-8 md:p-14 border border-white/[0.08] rounded-[40px] shadow-2xl animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
+                                <div className="p-8 md:p-14 border border-white/5 rounded-[40px] animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
                                     <div className="flex items-center justify-between mb-10">
                                         <h3 className="text-zinc-500 font-black uppercase text-[11px] tracking-[0.6em]">Nội dung hành trình</h3>
-                                        <div className="h-[1px] flex-1 bg-white/5 ml-10"></div>
+                                        <div className="h-[1px] flex-1 bg-white/[0.03] ml-10"></div>
                                     </div>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4">
                                         {movie.episodes[0]?.server_data.map((ep, idx) => (
                                             <Link
                                                 key={ep.slug}
                                                 to={`/xem-phim/${movie.slug}/${ep.slug}`}
-                                                className="aspect-[4/3] flex items-center justify-center bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 text-xs font-black transition-all rounded-xl active:scale-95 font-premium group relative overflow-hidden"
+                                                className="aspect-[4/3] flex items-center justify-center border border-white/5 text-zinc-500 hover:text-white hover:bg-blue-600 hover:border-blue-500 text-xs font-black transition-all rounded-xl active:scale-95 font-premium group relative overflow-hidden"
                                             >
                                                 <span className="relative z-10">{idx + 1}</span>
-                                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                                <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                             </Link>
                                         ))}
                                     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
@@ -7,7 +7,7 @@ import Watch from './pages/Watch';
 import Catalog from './pages/Catalog';
 
 const ScrollToTop = () => {
-  const { pathname } = React.useMemo(() => window.location, []);
+  const { pathname } = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

@@ -15,7 +15,7 @@ const MovieDetail: React.FC = () => {
         ApiService.getMovieDetail(slug)
             .then(data => {
                 setMovie(data);
-                document.title = `${data.name} - MovieHub`;
+                document.title = `${data.name} - AniVie`;
             })
             .finally(() => setLoading(false));
     }, [slug]);

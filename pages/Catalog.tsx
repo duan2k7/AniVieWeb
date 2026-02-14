@@ -76,13 +76,13 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
         fetchData();
         window.scrollTo(0, 0);
         if (type === 'search' && keyword) {
-            document.title = `Tìm kiếm: ${keyword} - MovieHub`;
+            document.title = `Tìm kiếm: ${keyword} - AniVie`;
         }
     }, [type, category, keyword, page]);
 
     useEffect(() => {
         if (type === 'category' && title) {
-            document.title = `${title} - MovieHub`;
+            document.title = `${title} - AniVie`;
         }
     }, [title, type]);
 

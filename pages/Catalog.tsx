@@ -3,6 +3,7 @@ import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { ApiService } from '../services/api';
 import { Movie } from '../types';
 import MovieCard from '../components/MovieCard';
+import { Icons } from '../components/Icons';
 
 interface CatalogProps {
     type?: 'search' | 'category';
@@ -66,50 +67,70 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
         setSearchParams(params);
     };
 
+    if (loading) return (
+        <div className="min-h-screen bg-black flex items-center justify-center">
+            <div className="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    );
+
+    const titles: Record<string, string> = {
+        'hoat-hinh': 'Phim Hoạt Hình',
+        'phim-le': 'Phim Lẻ Mới',
+        'phim-bo': 'Phim Bộ Mới',
+        'tv-shows': 'TV Shows & Gameshow',
+        'phim-dang-chieu': 'Phim Đang Chiếu'
+    };
+
     return (
-        <div className="min-h-screen bg-black pt-20 md:pt-28 pb-12 px-4 md:px-6">
-            <div className="max-w-7xl mx-auto">
-                <header className="mb-10 border-l-4 border-blue-600 pl-5">
-                    <h1 className="text-2xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">{title}</h1>
-                    <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mt-2">Tổng cộng {movies.length} nội dung</p>
+        <div className="min-h-screen bg-[#050505] pt-24 md:pt-32 pb-32">
+            <div className="max-w-[1600px] mx-auto px-6">
+                <header className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-4 border-blue-600 pl-8">
+                    <div>
+                        <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">
+                            {type === 'search' ? `Kết quả: ${keyword}` : (titles[category as string] || 'Danh Sách Phim')}
+                        </h1>
+                        <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-4 italic opacity-60">
+                            Khám phá tinh hoa điện ảnh toàn cầu
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-4 text-zinc-500 font-black text-[10px] uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/5">
+                        {movies.length} Tác phẩm
+                    </div>
                 </header>
 
-                {loading ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-8">
-                        {[...Array(12)].map((_, i) => (
-                            <div key={i} className="aspect-[2/3] bg-zinc-900 animate-pulse rounded-md"></div>
-                        ))}
-                    </div>
-                ) : movies.length > 0 ? (
+                {movies.length > 0 ? (
                     <>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-8">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8 md:gap-12">
                             {movies.map(movie => (
                                 <MovieCard key={movie._id} movie={movie} />
                             ))}
                         </div>
-
-                        {/* Minimalist Pagination */}
-                        <div className="flex justify-center items-center gap-6 mt-16 pt-10 border-t border-zinc-900/50">
+                        <div className="flex justify-center items-center gap-6 mt-24 pt-10 border-t border-white/[0.05]">
                             <button
                                 onClick={() => handlePageChange(page - 1)}
                                 disabled={page === 1}
-                                className={`px-8 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] border transition-all rounded-sm active:scale-95 ${page === 1 ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-zinc-800 hover:text-white hover:border-zinc-500'}`}
+                                className={`px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] border transition-all rounded-full active:scale-95 font-premium ${page === 1 ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-white/10 hover:text-white hover:border-blue-500 hover:bg-blue-600'}`}
                             >
-                                Trước
+                                Trang trước
                             </button>
-                            <span className="text-zinc-700 text-[10px] font-black uppercase tracking-widest">Trang {page}</span>
+                            <span className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em] font-premium italic">
+                                0{page} <span className="mx-4 text-zinc-800">/</span> {movies.length < 10 ? page : '...'}
+                            </span>
                             <button
                                 onClick={() => handlePageChange(page + 1)}
-                                disabled={movies.length < 10 && page > 1}
-                                className={`px-8 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] border transition-all rounded-sm active:scale-95 ${movies.length < 10 && page > 1 ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-zinc-800 hover:text-white hover:border-zinc-500'}`}
+                                disabled={!hasMore}
+                                className={`px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] border transition-all rounded-full active:scale-95 font-premium ${!hasMore ? 'text-zinc-800 border-zinc-900 cursor-not-allowed' : 'text-zinc-500 border-white/10 hover:text-white hover:border-blue-500 hover:bg-blue-600'}`}
                             >
-                                Sau
+                                Tiếp theo
                             </button>
                         </div>
                     </>
                 ) : (
-                    <div className="text-center py-20 text-zinc-700 text-[10px] font-black uppercase tracking-[0.3em] bg-zinc-900/10 rounded-md border border-zinc-900/50">
-                        Không tìm thấy kết quả nào.
+                    <div className="text-center py-32 bg-white/[0.02] rounded-[40px] border border-white/[0.05] animate-in fade-in duration-1000">
+                        <div className="inline-block p-10 bg-white/5 rounded-full mb-8">
+                            <Icons.Search size={40} className="text-zinc-800" />
+                        </div>
+                        <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.4em]">Tín hiệu trống - Không tìm thấy nội dung</p>
                     </div>
                 )}
             </div>

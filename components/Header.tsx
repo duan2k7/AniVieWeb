@@ -25,68 +25,78 @@ const Header: React.FC = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-900">
-            <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-2xl border-b border-white/[0.05]">
+            <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
 
                 {/* Left: Logo & Nav */}
-                <div className="flex items-center gap-8">
-                    <Link to="/" className="flex items-center gap-2 shrink-0">
-                        <Icons.Play size={20} className="text-blue-500 fill-blue-500" />
-                        <span className="text-xl font-black tracking-tighter text-white uppercase italic">
+                <div className="flex items-center gap-12">
+                    <Link to="/" className="flex items-center gap-2 group transition-transform active:scale-95">
+                        <div className="bg-blue-600 p-1 rounded-sm shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform duration-300">
+                            <Icons.Play size={18} className="text-white fill-current" />
+                        </div>
+                        <span className="text-2xl font-black tracking-tighter text-white uppercase italic font-premium">
                             Movie<span className="text-blue-500">Hub</span>
                         </span>
                     </Link>
 
-                    <nav className="hidden lg:flex items-center gap-6">
+                    <nav className="hidden xl:flex items-center gap-8">
                         {navLinks.map(link => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-blue-500 ${location.pathname === link.path ? 'text-blue-500' : 'text-zinc-500'}`}
+                                className={`text-[11px] font-bold uppercase tracking-[0.25em] transition-all hover:text-blue-500 relative py-2 ${location.pathname === link.path ? 'text-blue-500' : 'text-zinc-400 opacity-80 hover:opacity-100'}`}
                             >
                                 {link.name}
+                                {location.pathname === link.path && (
+                                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-500 rounded-full animate-in fade-in zoom-in duration-300"></span>
+                                )}
                             </Link>
                         ))}
                     </nav>
                 </div>
 
-                {/* Right: Search & Mobile Toggle */}
-                <div className="flex items-center gap-2 flex-1 justify-end">
+                {/* Right: Search & Actions */}
+                <div className="flex items-center gap-4 flex-1 justify-end max-w-xl">
                     {/* Desktop Search */}
-                    <form onSubmit={handleSearchSubmit} className="hidden md:block relative w-full max-w-[240px]">
+                    <form onSubmit={handleSearchSubmit} className="hidden md:block relative w-full max-w-[320px] group">
                         <input
                             type="text"
-                            placeholder="Tìm tên phim..."
-                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-sm py-2 pl-9 pr-4 text-xs text-white focus:outline-none focus:border-blue-500/50 transition-all font-medium"
+                            placeholder="Khám phá kho tàng phim..."
+                            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-full py-2.5 pl-11 pr-5 text-[11px] text-white focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.05] transition-all font-medium placeholder:zinc-600"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                        <Icons.Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-600" />
+                        <Icons.Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-blue-500 transition-colors" />
                     </form>
 
                     {/* Mobile Search Toggle */}
                     <button
                         onClick={() => setIsSearchOpen(!isSearchOpen)}
-                        className="md:hidden p-2 text-zinc-400 hover:text-white"
+                        className="md:hidden p-2.5 bg-white/[0.05] rounded-full text-zinc-400 hover:text-white transition-colors border border-white/[0.05]"
                     >
-                        {isSearchOpen ? <Icons.X size={20} /> : <Icons.Search size={20} />}
+                        {isSearchOpen ? <Icons.X size={18} /> : <Icons.Search size={18} />}
                     </button>
+
+                    {/* Action Button (Optional) */}
+                    <div className="hidden sm:block">
+                        <button className="bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold px-5 py-2.5 rounded-full border border-white/10 transition-all active:scale-95 uppercase tracking-widest leading-none">Tham gia</button>
+                    </div>
                 </div>
             </div>
 
-            {/* Mobile Search Bar Expandable */}
+            {/* Mobile Search Bar Expansion */}
             {isSearchOpen && (
-                <div className="md:hidden px-4 pb-4 animate-in slide-in-from-top duration-200">
-                    <form onSubmit={handleSearchSubmit} className="relative">
+                <div className="md:hidden px-6 pb-6 bg-black/95 backdrop-blur-xl border-b border-white/5 animate-in slide-in-from-top duration-300">
+                    <form onSubmit={handleSearchSubmit} className="relative mt-2">
                         <input
                             type="text"
                             autoFocus
-                            placeholder="Nhập tên phim cần tìm..."
-                            className="w-full bg-zinc-900 border border-zinc-800 rounded-sm py-3 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-blue-500 transition-all font-bold"
+                            placeholder="Bận đang muốn xem gì?"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-6 text-sm text-white focus:outline-none focus:border-blue-500 transition-all font-bold placeholder:zinc-600"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                        <Icons.Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" />
+                        <Icons.Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" />
                     </form>
                 </div>
             )}

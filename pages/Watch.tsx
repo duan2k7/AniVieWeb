@@ -69,8 +69,8 @@ const Watch: React.FC = () => {
             <div className="max-w-[1700px] mx-auto">
                 <div className="flex flex-col lg:flex-row gap-8">
 
-                    {/* Left: Episode List Sidebar */}
-                    <div className="w-full lg:w-[400px] flex-shrink-0 order-2 lg:order-1">
+                    {/* Right: Episode List Sidebar */}
+                    <div className="w-full lg:w-[400px] flex-shrink-0 order-2">
                         <div className="bg-zinc-900/40 border border-white/5 rounded-3xl overflow-hidden sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
                             <div className="p-6 border-b border-white/5 bg-zinc-900/60 flex items-center justify-between">
                                 <span className="text-white font-black uppercase text-xs tracking-[0.4em]">Danh sách tập</span>
@@ -115,8 +115,8 @@ const Watch: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right: Player & Content */}
-                    <div className="flex-1 order-1 lg:order-2 space-y-8">
+                    {/* Left: Player & Content */}
+                    <div className="flex-1 order-1 space-y-8">
                         {/* Player Area */}
                         <div className="relative group">
                             <div className="aspect-video bg-black rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative">

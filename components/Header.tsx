@@ -19,9 +19,7 @@ const Header: React.FC = () => {
 
     const navLinks = [
         { name: 'Trang Chủ', path: '/' },
-        { name: 'Anime Bộ', path: '/danh-sach/hoat-hinh' },
-        { name: 'Anime Lẻ', path: '/danh-sach/anime-le' }, // Using a placeholder for movie filtering or generic list
-        { name: 'Mới Cập Nhật', path: '/danh-sach/phim-moi' },
+        { name: 'Danh Sách Anime', path: '/danh-sach/hoat-hinh' },
     ];
 
     return (

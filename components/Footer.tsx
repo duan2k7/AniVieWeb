@@ -22,20 +22,27 @@ const Footer: React.FC = () => {
           {/* Navigation Segments */}
           <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-12">
             <div className="space-y-6">
-              <span className="text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-40 block">Khám phá</span>
+              <span className="text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-40 block">Điều hướng</span>
               <ul className="space-y-4">
                 <li><Link to="/" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Trang chủ</Link></li>
-                <li><Link to="/danh-sach/hoat-hinh" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Anime bộ</Link></li>
-                <li><Link to="/danh-sach/phim-moi" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Mới cập nhật</Link></li>
+                <li><Link to="/danh-sach/hoat-hinh" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Danh sách Anime</Link></li>
               </ul>
             </div>
 
             <div className="space-y-6">
-              <span className="text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-40 block">Liên kết</span>
+              <span className="text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-40 block">Hỗ trợ</span>
               <ul className="space-y-4">
-                <li><Link to="/danh-sach/hoat-hinh" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Hoạt hình</Link></li>
+                <li><Link to="/danh-sach/hoat-hinh" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Trung tâm giúp đỡ</Link></li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.4em]">© 2026 AniVie - Premium Streaming Experience</p>
+          <div className="flex gap-8">
+            <span className="text-zinc-800 text-[10px] font-black uppercase tracking-[0.4em] italic hover:text-white transition-colors cursor-pointer">Privacy</span>
+            <span className="text-zinc-800 text-[10px] font-black uppercase tracking-[0.4em] italic hover:text-white transition-colors cursor-pointer">Terms</span>
           </div>
         </div>
       </div>

@@ -89,13 +89,15 @@ const Home: React.FC = () => {
                                 )}
                             </div>
 
-                            {/* Main Title with Special Text Effects */}
-                            <h1 className="text-5xl md:text-[10rem] font-black text-white mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] animate-slide-right" style={{ animationDelay: '0.1s' }}>
-                                {heroMovie.name}
+                            {/* Main Title with Optimized Typography */}
+                            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[8rem] font-black text-white mb-6 tracking-tighter leading-[0.9] uppercase italic font-premium drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] animate-slide-right break-words line-clamp-3" style={{ animationDelay: '0.1s' }}>
+                                <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/40">
+                                    {heroMovie.name}
+                                </span>
                             </h1>
 
                             {/* Original Name & Tagline */}
-                            <div className="mb-12 animate-slide-right flex items-center gap-6" style={{ animationDelay: '0.2s' }}>
+                            <div className="mb-10 animate-slide-right flex items-center gap-6" style={{ animationDelay: '0.2s' }}>
                                 <div className="h-20 w-[2px] bg-gradient-to-b from-blue-600 to-transparent"></div>
                                 <div>
                                     <p className="text-zinc-400 text-sm md:text-xl font-medium italic opacity-90 leading-tight tracking-wide mb-2">

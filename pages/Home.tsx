@@ -54,12 +54,12 @@ const Home: React.FC = () => {
             {/* Cinematic Hero Section */}
             {heroMovie && (
                 <div className="relative w-full h-[70vh] md:h-[90vh] min-h-[600px] bg-black border-b border-white/[0.03] overflow-hidden group">
-                    {/* Background Image - Increased clarity */}
-                    <div className="absolute inset-0 transition-transform duration-[10000ms] ease-out">
+                    {/* Background Image - Atmospheric Blur */}
+                    <div className="absolute inset-0 scale-105 transition-transform duration-[10000ms] ease-out">
                         <img
                             src={heroMovie.poster_url}
                             alt={heroMovie.name}
-                            className="w-full h-full object-cover opacity-80 md:opacity-60 animate-fade contrast-[1.1] brightness-[0.9]"
+                            className="w-full h-full object-cover opacity-70 md:opacity-50 animate-fade blur-2xl contrast-[1.2] brightness-[0.8]"
                         />
                     </div>
 

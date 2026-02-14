@@ -20,18 +20,18 @@ const MovieDetail: React.FC = () => {
     if (loading) return <div className="min-h-screen bg-black"></div>;
     return (
         <div className="min-h-screen bg-[#050505] relative overflow-hidden">
-            {/* Cinematic Background Layer */}
-            <div className="absolute top-0 left-0 right-0 h-[85vh] pointer-events-none group">
+            {/* Cinematic Background Layer - Seamless Blending */}
+            <div className="absolute top-0 left-0 right-0 h-screen pointer-events-none group">
                 <div className="absolute inset-0 transition-transform duration-[20s] ease-linear scale-110 group-hover:scale-125">
                     <img
                         src={movie.poster_url}
-                        className="w-full h-full object-cover blur-2xl contrast-[1.2] brightness-[0.6] opacity-40 md:opacity-30"
+                        className="w-full h-full object-cover blur-3xl contrast-[1.2] brightness-[0.5] opacity-40 md:opacity-30"
                         alt=""
                     />
                 </div>
-                {/* Layered Overlays for Depth */}
+                {/* Layered Overlays for Perfect Depth */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,_transparent_0%,_#050505_100%)] opacity-80"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#050505]/40 to-[#050505]"></div>
             </div>
 

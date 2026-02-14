@@ -51,63 +51,98 @@ const Home: React.FC = () => {
 
     return (
         <div className="min-h-screen pb-32 bg-[#050505] pt-16">
-            {/* Cinematic Hero Section */}
+            {/* Cinematic Hero Section 2.0 */}
             {heroMovie && (
-                <div className="relative w-full h-[70vh] md:h-[90vh] min-h-[600px] bg-black border-b border-white/[0.03] overflow-hidden group">
-                    {/* Background Image - Atmospheric Blur */}
-                    <div className="absolute inset-0 scale-105 transition-transform duration-[10000ms] ease-out">
+                <div className="relative w-full h-[85vh] md:h-[95vh] min-h-[700px] bg-black overflow-hidden group">
+                    {/* Dynamic Layered Background */}
+                    <div className="absolute inset-0 transition-transform duration-[20s] ease-linear scale-110 group-hover:scale-125">
                         <img
                             src={heroMovie.poster_url}
                             alt={heroMovie.name}
-                            className="w-full h-full object-cover opacity-70 md:opacity-50 animate-fade blur-2xl contrast-[1.2] brightness-[0.8]"
+                            className="w-full h-full object-cover opacity-60 blur-xl contrast-[1.1] brightness-[0.7]"
                         />
                     </div>
 
-                    {/* Refined Gradients for better visibility */}
+                    {/* Spotlight Shadow Mask */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,_transparent_0%,_#050505_100%)] opacity-80"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent"></div>
 
-                    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-24 max-w-[1700px] mx-auto w-full">
-                        <div className="max-w-5xl mb-16 md:mb-20">
-                            <div className="flex items-center gap-4 mb-8 animate-slide-right">
-                                <div className="h-[1px] w-12 bg-blue-600"></div>
-                                <span className="bg-blue-600/10 text-blue-500 text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-[0.3em] border border-blue-500/20 backdrop-blur-md">Hot Update</span>
-                                <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] italic opacity-60">Trải nghiệm đỉnh cao</span>
+                    {/* Content Container */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-32 max-w-[1800px] mx-auto w-full z-10">
+                        <div className="max-w-4xl pb-12">
+                            {/* Metadata Badges */}
+                            <div className="flex flex-wrap items-center gap-3 mb-8 animate-slide-right">
+                                <span className="bg-blue-600 text-white text-[10px] md:text-xs font-black px-4 py-1.5 rounded-sm uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                                    Featured
+                                </span>
+                                <span className="bg-white/10 backdrop-blur-md text-zinc-300 text-[10px] md:text-xs font-bold px-4 py-1.5 border border-white/10 uppercase tracking-[0.2em]">
+                                    {heroMovie.quality || 'FULL HD'}
+                                </span>
+                                <span className="bg-white/10 backdrop-blur-md text-blue-400 text-[10px] md:text-xs font-bold px-4 py-1.5 border border-white/10 uppercase tracking-[0.2em]">
+                                    {heroMovie.year}
+                                </span>
+                                {heroMovie.lang && (
+                                    <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] ml-2 opacity-80">
+                                        Sub: {heroMovie.lang}
+                                    </span>
+                                )}
                             </div>
 
-                            <h1 className="text-4xl md:text-9xl font-black text-white mb-8 md:mb-10 tracking-tighter leading-[0.8] uppercase italic font-premium drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-slide-right line-clamp-2" style={{ animationDelay: '0.1s' }}>
+                            {/* Main Title with Special Text Effects */}
+                            <h1 className="text-5xl md:text-[10rem] font-black text-white mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] animate-slide-right" style={{ animationDelay: '0.1s' }}>
                                 {heroMovie.name}
                             </h1>
 
-                            <div className="flex items-center gap-6 mb-12 md:mb-16 animate-slide-right" style={{ animationDelay: '0.2s' }}>
-                                <p className="text-zinc-300 text-sm md:text-2xl font-medium italic opacity-80 border-l-2 border-blue-600 pl-8 leading-relaxed max-w-3xl">
-                                    {heroMovie.origin_name} • <span className="text-blue-500 font-black">{heroMovie.year}</span>
-                                </p>
+                            {/* Original Name & Tagline */}
+                            <div className="mb-12 animate-slide-right flex items-center gap-6" style={{ animationDelay: '0.2s' }}>
+                                <div className="h-20 w-[2px] bg-gradient-to-b from-blue-600 to-transparent"></div>
+                                <div>
+                                    <p className="text-zinc-400 text-sm md:text-xl font-medium italic opacity-90 leading-tight tracking-wide mb-2">
+                                        {heroMovie.origin_name}
+                                    </p>
+                                    <div className="flex items-center gap-2">
+                                        <div className="flex gap-0.5">
+                                            {[1, 2, 3, 4, 5].map((s) => (
+                                                <Icons.Star key={s} size={12} className="fill-blue-500 text-blue-500" />
+                                            ))}
+                                        </div>
+                                        <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest mt-1">9.8 RATING</span>
+                                    </div>
+                                </div>
                             </div>
 
+                            {/* Action Buttons */}
                             <div className="flex flex-wrap items-center gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
                                 <Link
                                     to={`/phim/${heroMovie.slug}`}
-                                    className="flex items-center gap-5 bg-blue-600 text-white px-12 md:px-20 py-5 md:py-7 rounded-sm font-black text-[11px] md:text-sm hover:bg-white hover:text-black transition-all uppercase tracking-[0.4em] shadow-[0_0_50px_rgba(37,99,235,0.3)] active:scale-95 group font-premium italic"
+                                    className="relative flex items-center gap-4 bg-white text-black px-12 md:px-16 py-5 md:py-6 rounded-sm font-black text-[11px] md:text-sm hover:scale-105 transition-all uppercase tracking-[0.3em] font-premium italic overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.2)] group"
                                 >
-                                    <Icons.Play size={20} className="fill-current group-hover:scale-125 transition-transform" />
-                                    Xem ngay
+                                    <div className="absolute inset-0 bg-blue-600 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500"></div>
+                                    <Icons.Play size={18} className="relative z-10 fill-current" />
+                                    <span className="relative z-10 group-hover:text-white transition-colors">Bắt đầu xem</span>
                                 </Link>
+
                                 <Link
                                     to={`/phim/${heroMovie.slug}`}
-                                    className="flex items-center gap-5 bg-white/[0.03] backdrop-blur-xl text-white px-12 md:px-20 py-5 md:py-7 rounded-sm font-black text-[11px] md:text-sm border border-white/10 hover:bg-white/10 transition-all uppercase tracking-[0.4em] active:scale-95 font-premium italic"
+                                    className="flex items-center gap-4 bg-white/5 backdrop-blur-2xl text-white px-12 md:px-16 py-5 md:py-6 rounded-sm font-black text-[11px] md:text-sm border border-white/10 hover:bg-white/10 transition-all uppercase tracking-[0.3em] font-premium italic"
                                 >
-                                    <Icons.Info size={20} />
-                                    Chi tiết
+                                    <Icons.Info size={18} />
+                                    Xem thông tin
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Decorative background text */}
-                        <div className="absolute right-0 bottom-24 hidden xl:block opacity-[0.02] pointer-events-none">
-                            <span className="text-[200px] font-black uppercase tracking-tighter italic leading-none whitespace-nowrap font-premium">PREMIUM CONTENT</span>
+                        {/* Floating elements for depth */}
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden 2xl:block opacity-10 pointer-events-none select-none">
+                            <span className="text-[250px] font-black uppercase tracking-tighter italic leading-none vertical-text font-premium" style={{ writingMode: 'vertical-rl' }}>
+                                CINEMATIC
+                            </span>
                         </div>
                     </div>
+
+                    {/* Bottom Edge Fade */}
+                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10"></div>
                 </div>
             )}
 

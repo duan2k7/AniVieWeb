@@ -29,26 +29,26 @@ const Header: React.FC = () => {
             <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
 
                 {/* Left: Logo & Nav */}
-                <div className="flex items-center gap-12">
-                    <Link to="/" className="flex items-center gap-2 group transition-transform active:scale-95">
-                        <div className="bg-blue-600 p-1 rounded-sm shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform duration-300">
-                            <Icons.Play size={18} className="text-white fill-current" />
+                <div className="flex items-center gap-16">
+                    <Link to="/" className="flex items-center gap-3 group transition-transform active:scale-95 shrink-0">
+                        <div className="bg-blue-600 p-1.5 rounded-sm shadow-xl shadow-blue-500/20 group-hover:rotate-12 transition-all duration-300">
+                            <Icons.Play size={20} className="text-white fill-current" />
                         </div>
-                        <span className="text-2xl font-black tracking-tighter text-white uppercase italic font-premium">
+                        <span className="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase italic font-premium select-none">
                             Movie<span className="text-blue-500">Hub</span>
                         </span>
                     </Link>
 
-                    <nav className="hidden xl:flex items-center gap-8">
+                    <nav className="hidden xl:flex items-center gap-10">
                         {navLinks.map(link => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`text-[11px] font-bold uppercase tracking-[0.25em] transition-all hover:text-blue-500 relative py-2 ${location.pathname === link.path ? 'text-blue-500' : 'text-zinc-400 opacity-80 hover:opacity-100'}`}
+                                className={`text-[12px] font-bold uppercase tracking-[0.3em] transition-all relative py-2 ${location.pathname === link.path ? 'text-blue-500' : 'text-zinc-400 hover:text-white'}`}
                             >
                                 {link.name}
                                 {location.pathname === link.path && (
-                                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-500 rounded-full animate-in fade-in zoom-in duration-300"></span>
+                                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-blue-500 rounded-full"></span>
                                 )}
                             </Link>
                         ))}

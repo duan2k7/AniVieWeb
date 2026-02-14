@@ -44,29 +44,29 @@ const Home: React.FC = () => {
     const displayMovies = movies.slice(1, 13);
 
     return (
-        <div className="min-h-screen pb-32 bg-[#050505]">
+        <div className="min-h-screen pb-32 bg-[#050505] pt-16">
             {/* Minimalist Hero Section */}
             {heroMovie && (
-                <div className="relative w-full h-[55vh] md:h-[85vh] min-h-[500px] bg-zinc-900 border-b border-white/[0.03] overflow-hidden">
+                <div className="relative w-full h-[60vh] md:h-[85vh] min-h-[500px] bg-zinc-900 border-b border-white/[0.03] overflow-hidden">
                     <img
                         src={heroMovie.poster_url}
                         alt={heroMovie.name}
-                        className="w-full h-full object-cover opacity-70 md:opacity-50 scale-105 animate-in fade-in zoom-in duration-1000"
+                        className="w-full h-full object-cover opacity-70 md:opacity-50 scale-105 animate-fade"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent"></div>
-                    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-20 max-w-[1600px] mx-auto w-full">
-                        <div className="max-w-4xl mb-6 md:mb-16">
-                            <div className="flex items-center gap-3 mb-6 animate-in slide-in-from-left duration-500">
+                    <div className="absolute inset-0 flex flex-col justify-center md:justify-end p-8 md:p-20 max-w-[1600px] mx-auto w-full">
+                        <div className="max-w-4xl mb-6 md:mb-16 pt-12 md:pt-0">
+                            <div className="flex items-center gap-3 mb-6 animate-slide-right">
                                 <span className="bg-blue-600 text-white text-[9px] font-black px-3 py-1 rounded-sm uppercase tracking-[0.2em] shadow-xl shadow-blue-500/30">Nổi bật hôm nay</span>
                                 <span className="text-zinc-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] opacity-60">Thanh lọc tâm hồn</span>
                             </div>
-                            <h1 className="text-4xl md:text-8xl font-black text-white mb-6 md:mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-2xl animate-in slide-in-from-left duration-700 delay-100">
+                            <h1 className="text-4xl md:text-8xl font-black text-white mb-6 md:mb-8 tracking-tighter leading-[0.85] uppercase italic font-premium drop-shadow-2xl animate-slide-right" style={{ animationDelay: '0.1s' }}>
                                 {heroMovie.name}
                             </h1>
-                            <p className="text-zinc-400 text-xs md:text-xl mb-10 md:mb-14 line-clamp-2 max-w-2xl font-medium italic opacity-70 border-l border-zinc-800 pl-6 animate-in slide-in-from-left duration-1000 delay-200">
+                            <p className="text-zinc-400 text-xs md:text-xl mb-10 md:mb-14 line-clamp-2 max-w-2xl font-medium italic opacity-70 border-l border-zinc-800 pl-6 animate-slide-right" style={{ animationDelay: '0.2s' }}>
                                 {heroMovie.origin_name} • {heroMovie.year}
                             </p>
-                            <div className="flex flex-wrap gap-4 animate-in slide-in-from-bottom duration-700 delay-300">
+                            <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
                                 <Link
                                     to={`/phim/${heroMovie.slug}`}
                                     className="inline-flex items-center gap-4 bg-white text-black px-10 md:px-16 py-4 md:py-6 rounded-full font-black text-[11px] md:text-xs hover:bg-blue-600 hover:text-white transition-all uppercase tracking-[0.3em] shadow-2xl shadow-blue-500/10 active:scale-95 group font-premium"
@@ -84,7 +84,7 @@ const Home: React.FC = () => {
                 </div>
             )}
 
-            <div className="max-w-[1600px] mx-auto px-6 space-y-24 md:space-y-32">
+            <div className="max-w-[1600px] mx-auto px-6 space-y-24 md:space-y-32 animate-fade" style={{ animationDelay: '0.5s' }}>
                 {/* Phim Mới */}
                 <section className="mt-20">
                     <div className="flex items-end justify-between mb-12 border-b border-white/[0.05] pb-8">

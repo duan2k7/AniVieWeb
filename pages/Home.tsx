@@ -69,8 +69,8 @@ const Home: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent"></div>
 
                     {/* Content Container - Optimized for safe-zone and premium feel */}
-                    <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-20 lg:px-32 max-w-[1900px] mx-auto w-full z-10 pointer-events-none">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20 mt-12 md:mt-0 pointer-events-auto">
+                    <div className="absolute inset-0 flex flex-col justify-end pb-20 md:pb-32 px-6 md:px-20 lg:px-32 max-w-[1900px] mx-auto w-full z-10 pointer-events-none">
+                        <div className="flex flex-col md:flex-row items-end md:items-center justify-between gap-12 lg:gap-20 pointer-events-auto">
 
                             <div className="max-w-4xl">
                                 {/* Premium Status Indicator */}

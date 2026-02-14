@@ -19,10 +19,9 @@ const Header: React.FC = () => {
 
     const navLinks = [
         { name: 'Trang Chủ', path: '/' },
-        { name: 'Phim Lẻ', path: '/danh-sach/phim-le' },
-        { name: 'Phim Bộ', path: '/danh-sach/phim-bo' },
-        { name: 'Anime', path: '/danh-sach/hoat-hinh' },
-        { name: 'TV Shows', path: '/danh-sach/tv-shows' },
+        { name: 'Anime Bộ', path: '/danh-sach/hoat-hinh' },
+        { name: 'Anime Lẻ', path: '/danh-sach/anime-le' }, // Using a placeholder for movie filtering or generic list
+        { name: 'Mới Cập Nhật', path: '/danh-sach/phim-moi' },
     ];
 
     return (
@@ -36,7 +35,7 @@ const Header: React.FC = () => {
                             <Icons.Play size={20} className="text-white fill-current" />
                         </div>
                         <span className="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase italic font-premium select-none">
-                            Movie<span className="text-blue-500">Hub</span>
+                            Ani<span className="text-blue-500">Vie</span>
                         </span>
                     </Link>
 

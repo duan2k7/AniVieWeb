@@ -13,17 +13,17 @@ const Home: React.FC = () => {
     const [heroMovie, setHeroMovie] = useState<Movie | null>(null);
 
     useEffect(() => {
-        document.title = 'MovieHub - Phim Mới Mỗi Ngày';
+        document.title = 'AniVie - Thế giới Anime trực tuyến';
         const fetchAll = async () => {
             try {
-                const [newRes, leRes, boRes] = await Promise.all([
-                    ApiService.getNewMovies(1),
-                    ApiService.getMoviesByType('phim-le', 1, 6),
-                    ApiService.getMoviesByType('phim-bo', 1, 6)
+                const [newRes, seriesRes, movieRes] = await Promise.all([
+                    ApiService.getMoviesByType('hoat-hinh', 1, 12),
+                    ApiService.getMoviesByType('hoat-hinh', 2, 6),
+                    ApiService.getMoviesByType('hoat-hinh', 3, 6)
                 ]);
                 setMovies(newRes.items);
-                setPhimLe(leRes.items.slice(0, 6));
-                setPhimBo(boRes.items.slice(0, 6));
+                setPhimLe(movieRes.items.slice(0, 6));
+                setPhimBo(seriesRes.items.slice(0, 6));
 
                 // Pick a random movie for Hero with a short name for best aesthetic
                 if (newRes.items.length > 0) {
@@ -157,10 +157,10 @@ const Home: React.FC = () => {
                 <section className="mt-20">
                     <div className="flex items-end justify-between mb-12 border-b border-white/[0.05] pb-8">
                         <div>
-                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Tiếp tục khám phá</h2>
-                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Phim vừa được cập nhật hệ thống</p>
+                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Anime mới cập nhật</h2>
+                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Những vùng đất mới vừa được khai phá</p>
                         </div>
-                        <Link to="/danh-sach/phim-moi" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
+                        <Link to="/danh-sach/hoat-hinh" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
                             Xem tất cả <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
                     </div>
@@ -175,10 +175,10 @@ const Home: React.FC = () => {
                 <section>
                     <div className="flex items-end justify-between mb-12 border-b border-white/[0.05] pb-8">
                         <div>
-                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Siêu phẩm điện ảnh</h2>
-                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Phim lẻ đặc sắc tuyển chọn</p>
+                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Siêu phẩm Anime lẻ</h2>
+                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Trải nghiệm điện ảnh đỉnh cao</p>
                         </div>
-                        <Link to="/danh-sach/phim-le" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
+                        <Link to="/danh-sach/hoat-hinh" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
                             Xem tất cả <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
                     </div>
@@ -193,10 +193,10 @@ const Home: React.FC = () => {
                 <section>
                     <div className="flex items-end justify-between mb-12 border-b border-white/[0.05] pb-8">
                         <div>
-                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Dòng phim dài tập</h2>
-                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Hành trình trải nghiệm vô tận</p>
+                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none font-premium italic">Hành trình Anime bộ</h2>
+                            <p className="text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mt-3 italic opacity-60">Khám phá thế giới vô tận</p>
                         </div>
-                        <Link to="/danh-sach/phim-bo" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
+                        <Link to="/danh-sach/hoat-hinh" className="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors group">
                             Xem tất cả <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
                     </div>

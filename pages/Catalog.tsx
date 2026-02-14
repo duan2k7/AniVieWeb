@@ -40,12 +40,9 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
                     }
                 } else if (type === 'category' && category) {
                     const titles: Record<string, string> = {
-                        'hoat-hinh': 'Phim Hoạt Hình',
-                        'phim-le': 'Phim Lẻ Mới',
-                        'phim-bo': 'Phim Bộ Mới',
-                        'tv-shows': 'TV Shows & Gameshow',
-                        'phim-dang-chieu': 'Phim Đang Chiếu',
-                        'phim-moi': 'Phim Mới Cập Nhật'
+                        'hoat-hinh': 'Thế giới Anime Bộ',
+                        'anime-le': 'Siêu phẩm Anime Lẻ',
+                        'phim-moi': 'Anime Mới Cập Nhật'
                     };
                     setTitle(`${titles[category] || 'Danh Sách Phim'}`);
 
@@ -102,12 +99,9 @@ const Catalog: React.FC<CatalogProps> = ({ type = 'category' }) => {
     );
 
     const titles: Record<string, string> = {
-        'hoat-hinh': 'Phim Hoạt Hình',
-        'phim-le': 'Phim Lẻ Mới',
-        'phim-bo': 'Phim Bộ Mới',
-        'tv-shows': 'TV Shows & Gameshow',
-        'phim-dang-chieu': 'Phim Đang Chiếu',
-        'phim-moi': 'Phim Mới Cập Nhật'
+        'hoat-hinh': 'Thế giới Anime Bộ',
+        'anime-le': 'Siêu phẩm Anime Lẻ',
+        'phim-moi': 'Anime Mới Cập Nhật'
     };
 
     return (

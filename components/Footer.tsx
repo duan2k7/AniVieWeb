@@ -30,8 +30,6 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-20 pt-10 border-t border-white/[0.03] flex justify-between items-center text-zinc-700">
-          <span className="text-[9px] font-black uppercase tracking-[0.3em]">© 2026 MovieHub Creative Studio</span>
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] font-premium">Dựng bởi Antigravity</span>
         </div>
       </div>
     </footer>

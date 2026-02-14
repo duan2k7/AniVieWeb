@@ -54,18 +54,18 @@ const Home: React.FC = () => {
             {/* Cinematic Hero Section */}
             {heroMovie && (
                 <div className="relative w-full h-[70vh] md:h-[90vh] min-h-[600px] bg-black border-b border-white/[0.03] overflow-hidden group">
-                    {/* Background Image with Ken Burns effect */}
-                    <div className="absolute inset-0 scale-110 group-hover:scale-100 transition-transform duration-[10000ms] ease-out">
+                    {/* Background Image - Increased clarity */}
+                    <div className="absolute inset-0 transition-transform duration-[10000ms] ease-out">
                         <img
                             src={heroMovie.poster_url}
                             alt={heroMovie.name}
-                            className="w-full h-full object-cover opacity-60 md:opacity-40 animate-fade"
+                            className="w-full h-full object-cover opacity-80 md:opacity-60 animate-fade contrast-[1.1] brightness-[0.9]"
                         />
                     </div>
 
-                    {/* Multi-layered Gradients */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/30"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/40 to-transparent"></div>
+                    {/* Refined Gradients for better visibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent"></div>
 
                     <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-24 max-w-[1700px] mx-auto w-full">
                         <div className="max-w-5xl mb-16 md:mb-20">

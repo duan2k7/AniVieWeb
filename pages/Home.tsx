@@ -24,10 +24,12 @@ const Home: React.FC = () => {
                 setPhimLe(leRes.items.slice(0, 6));
                 setPhimBo(boRes.items.slice(0, 6));
 
-                // Pick a random movie for Hero
+                // Pick a random movie for Hero with a short name for best aesthetic
                 if (newRes.items.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * Math.min(newRes.items.length, 10));
-                    setHeroMovie(newRes.items[randomIndex]);
+                    const shortNameMovies = newRes.items.filter(m => m.name.length < 30).slice(0, 10);
+                    const pool = shortNameMovies.length > 0 ? shortNameMovies : newRes.items.slice(0, 10);
+                    const randomIndex = Math.floor(Math.random() * pool.length);
+                    setHeroMovie(pool[randomIndex]);
                 }
             } catch (err) {
                 console.error(err);

@@ -37,14 +37,6 @@ const Footer: React.FC = () => {
                 <li><Link to="/danh-sach/tv-shows" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">TV Shows</Link></li>
               </ul>
             </div>
-
-            <div className="space-y-6 col-span-2 sm:col-span-1">
-              <span className="text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-40 block">Pháp lý</span>
-              <ul className="space-y-4">
-                <li><Link to="#" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Điều khoản</Link></li>
-                <li><Link to="#" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all hover:translate-x-1 inline-block">Bảo mật</Link></li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>

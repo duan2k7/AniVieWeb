@@ -77,10 +77,6 @@ const Header: React.FC = () => {
                         {isSearchOpen ? <Icons.X size={18} /> : <Icons.Search size={18} />}
                     </button>
 
-                    {/* Action Button (Optional) */}
-                    <div className="hidden sm:block">
-                        <button className="bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold px-5 py-2.5 rounded-full border border-white/10 transition-all active:scale-95 uppercase tracking-widest leading-none">Tham gia</button>
-                    </div>
                 </div>
             </div>
 
